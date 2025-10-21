@@ -1,0 +1,92 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Ward Portal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+
+    <link href="{% static 'css/login.css' %}" rel="stylesheet">
+
+    
+</head>
+<body>
+    <section class="vh-100">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-sm-6 text-black">
+              <div class="p-5 ms-xl-4 d-flex align-items-center">
+                <i class="bi bi-hospital-fill fs-1 me-3" style="color: #40bec0;"></i> 
+                <span class="h1 fw-bold mb-0">Ward Management</span>
+             </div>
+            <div class="d-flex align-items-center p-5 ms-xl-4">
+              {% if user.is_authenticated %}
+                    <div class="alert alert-info text-center" role="alert" style="width: 23rem; background-color: rgba(64, 190, 192, 0.5);">
+                      You are already logged in as <strong>{{ user.username }}</strong>.<br>
+                      <form method="post" action="{% url 'logout' %}" style="display: inline;">
+                          {% csrf_token %}
+                          <button type="submit" class="btn btn-link p-0 m-0 align-baseline">Logout?</button>
+                      </form>
+                       Or <a href="/" class="p-0 m-0 align-baseline">return to the main page</a>?
+                    </div>
+              {% else %}
+              <form method="post" action="{% url 'login' %}" style="width: 23rem;">
+                {% csrf_token %}
+                  <h3 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Login</h3>
+                  
+                  {% if form.non_field_errors %}
+                    <div class="alert alert-danger" role="alert">
+                        Incorrect username or password.
+                    </div>
+                  {% endif %}
+                  {% if form.errors and not form.non_field_errors %} 
+                       <div class="alert alert-danger" role="alert">
+                          Please correct the errors below.
+                       </div>
+                  {% endif %}
+
+                  <div data-mdb-input-init class="form-outline mb-4">
+                    <input type="text" name="username" id="{{ form.username.id_for_label }}" class="form-control form-control-lg {% if form.username.errors %}is-invalid{% endif %}" autofocus required>
+                    <label class="form-label" for="{{ form.username.id_for_label }}">Username</label>
+                    {% if form.username.errors %}
+                      <div class="invalid-feedback">
+                          {% for error in form.username.errors %}
+                              {{ error }}
+                          {% endfor %}
+                      </div>
+                    {% endif %}
+                  </div>
+      
+                  <div data-mdb-input-init class="form-outline mb-4">
+                    <input type="password" name="password" id="{{ form.password.id_for_label }}" class="form-control form-control-lg {% if form.password.errors %}is-invalid{% endif %}" required>
+                    <label class="form-label" for="{{ form.password.id_for_label }}">Password</label>
+                    {% if form.password.errors %}
+                      <div class="invalid-feedback">
+                          {% for error in form.password.errors %}
+                              {{ error }}
+                          {% endfor %}
+                      </div>
+                    {% endif %}
+                  </div>
+      
+                  <div class="pt-1 mb-4">
+                    <button data-mdb-button-init data-mdb-ripple-init class="btn btn-info btn-lg btn-block" type="submit" style="background-color: #40bec0; color: white; border-color:#40bec0">Login</button>
+                  </div>
+
+                  <input type="hidden" name="next" value="{{ next }}">
+                
+                </form>
+                {% endif %}
+              </div>
+      
+            </div>
+            <div class="col-sm-6 px-0 d-none d-sm-block">
+              <img src="https://images.unsplash.com/photo-1640876777002-badf6aee5bcc?q=80&w=3687&auto=format=fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="Login image" class="w-100 vh-100" style="object-fit: cover; object-position: left;">
+            </div>
+          </div>
+        </div>
+</body>
+</html>
