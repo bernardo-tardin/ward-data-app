@@ -1,0 +1,95 @@
+.patient-info {
+  font-size: 17px;
+  font-weight: 500;
+}
+
+.btn-search {
+  background-color: transparent;  
+  color: var(--brand-primary);               
+  border: 1.5px solid var(--brand-primary);               
+  padding: 4px 10px;         
+  font-size: 16px;            
+  border-radius: 5px;         
+  cursor: pointer;           
+  transition: background-color 0.3s ease;  
+}
+
+.btn-search:hover {
+  background-color: var(--brand-primary); 
+  color:white; 
+}
+
+.additional-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem; 
+}
+.card-section {
+  background: white;
+  padding: 1rem;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  max-height: 600px;
+  overflow-y: auto;
+}
+
+.card-section strong + .card table.table-striped th:nth-child(1),
+.card-section strong + .card table.table-striped td:nth-child(1) {
+  width: 15%; 
+}
+
+.card-section strong + .card table.table-striped th:nth-child(2),
+.card-section strong + .card table.table-striped td:nth-child(2) {
+  width: 10%; 
+}
+
+.card-section strong + .card table.table-striped th:nth-child(3),
+.card-section strong + .card table.table-striped td:nth-child(3) {
+  width: 75%; }
+
+.diagnostico {
+  font-size: 1.1em; }
+
+.card-section .diario th:nth-child(1),
+.card-section .diario td:nth-child(1) {
+  width: 15%; 
+}
+
+.card-section .diario th:nth-child(2),
+.card-section .diario td:nth-child(2) {
+  width: 10%;
+}
+
+.card-section .diario th:nth-child(3),
+.card-section .diario td:nth-child(3) {
+  width: 75%; }
+
+.card-section table tr:nth-child(odd) td {
+  background-color: rgba(83, 219, 219, 0.2)
+}
+
+.card-section table tr:nth-child(even) td {
+  background-color: #f7f7f8
+}
+
+.form-control:focus {
+  box-shadow: 0 0 0 0.2rem rgba(65, 185, 163, 0.25);
+  border-color: var(--brand-primary);
+}
+
+.custom-spinner {
+  border-width: 0.25em;
+  width: 2rem;
+  height: 2rem;
+  color: var(--brand-primary);
+  border-color: currentColor;       
+  border-right-color: transparent;  
+}
+
+#farmaco-content {
+  max-width: 350px;
+}
+
+#gerar-pdf-button {
+  white-space: nowrap;
+}

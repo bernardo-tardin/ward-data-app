@@ -1,0 +1,62 @@
+{% extends 'ward_data_app/base.html' %} 
+{% load static %}
+
+{% block title %}All Patients{% endblock %}
+
+{% block extra_head %}
+    <link href="{% static 'css/all-patients.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid p-4">
+        <h1>Patients</h1>
+
+        <div class="mt-4 mb-3"> 
+            <input type="text" id="search-input" class="form-control" placeholder="Search by name or Episode ID">
+        </div>
+
+        <div class="card mb-6 mb-xxl-0">
+            <div class="card-header d-flex justify-content-end p-3" id="sortOptions">
+                <label for="sort-by" class="me-2 col-form-label col-form-label-sm">Sort by:</label>
+                <select id="sort-by" class="form-select form-select-sm me-2 w-auto">
+                    <option value="id">Episode ID</option>
+                    <option value="name">Name</option>
+                    <option value="admission_date" selected>Admission Date</option>
+                </select>
+                <label for="sort-order" class="me-2 col-form-label col-form-label-sm">Order:</label>
+                <select id="sort-order" class="form-select form-select-sm w-auto">
+                    <option value="asc">Ascending</option>
+                    <option value="desc" selected>Descending</option>
+                </select>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                    <thead>
+                        <tr>
+                            <th class="fs-ms">Episode ID</th>
+                            <th class="fs-ms">Name</th>
+                            <th class="fs-ms">Room</th>
+                            <th class="fs-ms">Bed</th>
+                            <th class="fs-ms">Admission Date</th>
+                            <th class="fs-ms">Last Diary</th>
+                            <th class="fs-ms">PDF</th>
+                        </tr>
+                    </thead>
+                    <tbody id="patientsTableBody">
+                        </tbody>
+                </table>
+            </div>
+
+            <div class="card-footer d-flex justify-content-between align-items-center p-3">
+                <button id="prev-page" class="btn btn-sm btn-secondary" disabled>Previous</button>
+                <span id="pagination-info">Page 1 of ?</span> 
+                <button id="next-page" class="btn btn-sm btn-secondary" disabled>Next</button>
+            </div>
+        </div> 
+    </div> 
+{% endblock %}
+
+{% block extra_js %}
+    <script src="{% static 'js/all-patients.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,114 @@
+:root {
+  --bs-font-sans-serif: "Inter", sans-serif;
+  --bs-body-font-family: var(--bs-font-sans-serif);
+  --bs-body-font-size: 0.875rem;
+  --bs-body-font-weight: 380;
+  --bs-body-line-height: 1.5;
+  --brand-primary: #40bec0;
+  --bs-body-color: #22252a;
+  --bs-tertiary-bg: #f7f7f8;
+}
+
+body {
+  font-family: var(--bs-body-font-family);
+  font-size: var(--bs-body-font-size);
+  font-weight: var(--bs-body-font-weight);
+  line-height: var(--bs-body-line-height);
+  overflow-x: hidden; 
+}
+
+.sidebar {
+  width: 240px;
+  min-width: 240px; 
+  height: 100vh;
+  background-color: var(--brand-primary);
+  color: var(--bs-tertiary-bg);
+  transition: min-width 0.3s ease-in-out, width 0.3s ease-in-out;
+  display: flex; 
+  flex-direction: column; 
+  position: sticky;
+  top: 0;
+}
+
+.sidebar.collapsed {
+  width: 70px;
+  min-width: 70px;
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center; 
+  padding: 1rem;
+}
+
+.sidebar-header .toggle-btn {
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  color: var(--bs-tertiary-bg);
+  cursor: pointer;
+  flex-shrink: 0; 
+}
+
+.sidebar-title {
+  font-size: 1.2rem;
+  font-weight: 400;
+  line-height: 1.3;
+  margin-left: 0.5rem; 
+  white-space: normal;
+  word-break: break-word;
+}
+
+.sidebar-link {
+  font-size: 1.15rem;
+  color: var(--bs-tertiary-bg);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+.sidebar-link .icon {
+  font-size: 1.5rem;
+  min-width: 38px; 
+  text-align: center;
+}
+
+.sidebar-link:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+  color: white; 
+}
+
+.sidebar-menu {
+  flex-grow: 1; 
+}
+
+.sidebar-footer {
+  flex-shrink: 0; 
+}
+
+.sidebar.collapsed .sidebar-title,
+.sidebar.collapsed .text {
+  display: none;
+}
+
+.sidebar.collapsed .sidebar-link {
+  justify-content: center;
+}
+
+#page-content-wrapper {
+  padding: 20px;
+  width: 100%;
+}
+
+#dropdownUserMenu:focus,
+#dropdownUserMenu.focus-visible { 
+    outline: none;
+    box-shadow: none;
+}
+
+.btn-exit:active {
+  background-color: var(--brand-primary);
+  color: white;
+}

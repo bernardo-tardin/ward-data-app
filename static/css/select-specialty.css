@@ -1,0 +1,24 @@
+.btn-custom {
+  background-color: #40bec0; 
+  border-color: #40bec0; 
+  color: white; 
+}
+
+.btn-custom:hover {
+  background-color: #38a8aa;
+  border-color: #38a8aa;
+  color: white;
+}
+
+.btn-all {
+  background-color: transparent;  
+  color: var(--brand-primary);               
+  border: 1.5px solid var(--brand-primary);  
+  cursor: pointer;           
+  transition: background-color 0.3s ease;  
+}
+
+.form-select:focus {
+  border-color: #40bec0; 
+  box-shadow: 0 0 0 0.25rem rgba(64, 190, 192, 0.25); 
+}
